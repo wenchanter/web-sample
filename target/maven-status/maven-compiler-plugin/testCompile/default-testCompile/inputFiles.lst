@@ -1,0 +1,8 @@
+/Users/Enchanter/work/git/web-sample/src/test/java/com/wenchanter/web/sample/test/hessian/HessianTest.java
+/Users/Enchanter/work/git/web-sample/src/test/java/com/wenchanter/web/sample/test/thrift/CalculatorImpl.java
+/Users/Enchanter/work/git/web-sample/src/test/java/com/wenchanter/web/sample/test/thrift/Calculator.java
+/Users/Enchanter/work/git/web-sample/src/test/java/com/wenchanter/web/sample/test/thrift/JavaThriftServerTest.java
+/Users/Enchanter/work/git/web-sample/src/test/java/com/wenchanter/web/sample/test/thrift/JavaThriftClientTest.java
+/Users/Enchanter/work/git/web-sample/src/test/java/com/wenchanter/web/sample/test/redis/RedisTestDao.java
+/Users/Enchanter/work/git/web-sample/src/test/java/com/wenchanter/web/sample/test/memcache/MemcachedTest.java
+/Users/Enchanter/work/git/web-sample/src/test/java/com/wenchanter/web/sample/test/jms/JmsTest.java

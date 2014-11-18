@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		  http://www.springframework.org/schema/beans/spring-beans.xsd
+		  http://www.springframework.org/schema/aop 
+		  http://www.springframework.org/schema/aop/spring-aop.xsd
+		  http://www.springframework.org/schema/context 
+		  http://www.springframework.org/schema/context/spring-context.xsd
+		  http://www.springframework.org/schema/tx 
+		  http://www.springframework.org/schema/tx/spring-tx.xsd">
+		  
+	<!-- 使Spring关注Annotation -->     
+<!--     <context:component-scan base-package="com.netease.index" />  -->
+
+	<bean id="socialMemcachedCacheClient" class="net.rubyeye.xmemcached.utils.XMemcachedClientFactoryBean"
+		destroy-method="shutdown">
+		<property name="servers">
+			<!-- memcache cluster -->
+			<value>social.1.memcached.cms.163.com:11210 social.2.memcached.cms.163.com:11210</value>
+			<!-- 
+			<value>solr.1.memcached.cms.163.com:11201 solr.2.memcached.cms.163.com:11202</value>
+			 -->
+		</property>
+		<!-- nio connection pool size -->
+		<property name="connectionPoolSize" value="1"></property>
+		<!-- default is TextCommandFactory -->
+		<property name="commandFactory">
+			<bean class="net.rubyeye.xmemcached.command.BinaryCommandFactory"></bean>
+		</property>
+		<!-- Distributed strategy -->
+		<property name="sessionLocator">
+			<bean class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator"></bean>
+		</property>
+		<!-- Serializing transcoder -->
+		<property name="transcoder">
+			<bean class="net.rubyeye.xmemcached.transcoders.SerializingTranscoder" />
+		</property>
+		<!-- ByteBuffer allocator -->
+		<property name="bufferAllocator">
+			<bean class="net.rubyeye.xmemcached.buffer.SimpleBufferAllocator"></bean>
+		</property>
+		<!-- Failure mode -->
+		<property name="failureMode" value="false" />
+	</bean>
+
+    <bean id="articleMethodMemcachedCacheClient" class="net.rubyeye.xmemcached.utils.XMemcachedClientFactoryBean" destroy-method="shutdown">
+        <property name="servers">
+            <value>article.3g.master.memcached.cms.163.com:11217 article.3g.slave.memcached.cms.163.com:11217</value>
+            <!-- 
+            <value>solr.1.memcached.cms.163.com:11201 solr.2.memcached.cms.163.com:11202</value>
+             -->
+        </property>
+        <!-- nio connection pool size -->
+        <property name="connectionPoolSize" value="1"></property>
+        <!-- default is TextCommandFactory -->
+        <property name="commandFactory">
+            <bean class="net.rubyeye.xmemcached.command.BinaryCommandFactory"></bean>
+        </property>
+        <!-- Distributed strategy -->
+        <property name="sessionLocator">
+            <bean class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator"></bean>
+        </property>
+        <!-- Serializing transcoder -->
+        <property name="transcoder">
+            <bean class="net.rubyeye.xmemcached.transcoders.SerializingTranscoder" />
+        </property>
+        <!-- ByteBuffer allocator -->
+        <property name="bufferAllocator">
+            <bean class="net.rubyeye.xmemcached.buffer.SimpleBufferAllocator"></bean>
+        </property>
+        <!-- Failure mode -->
+        <property name="failureMode" value="false"/>
+    </bean>
+    
+	<!-- aop cache by memcache -->
+	<bean id="memcacheDaoCacheProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+<!-- 				<value>com.netease.search.news.service.index.*</value> -->
+				<value>*Service</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>cacheInterceptor</value>
+				<value>methodCacheInterceptor</value>
+			</list>
+		</property>
+	</bean>
+<!--     <bean id="memcacheDaoCacheProxyCreator" -->
+<!--         class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"> -->
+<!--         <property name="advice"> -->
+<!--             <bean class="com.netease.search.news.cache.CacheInterceptor"> -->
+<!--             </bean> -->
+<!--         </property> -->
+<!--         <property name="patterns"> -->
+<!--             <list> -->
+<!--                 <value>*Service</value> -->
+<!--             </list> -->
+<!--         </property> -->
+<!--     </bean> -->
+</beans>

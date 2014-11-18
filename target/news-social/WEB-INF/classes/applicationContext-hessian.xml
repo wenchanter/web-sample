@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		  http://www.springframework.org/schema/beans/spring-beans.xsd
+		  http://www.springframework.org/schema/aop 
+		  http://www.springframework.org/schema/aop/spring-aop.xsd
+		  http://www.springframework.org/schema/context 
+		  http://www.springframework.org/schema/context/spring-context.xsd
+		  http://www.springframework.org/schema/tx 
+		  http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<bean id="cms3gWebService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl">
+			<value>http://3gwebservice.build.index.netease.com:9011/webservice/3gcms</value>
+			<!-- 
+			<value>http://220.181.8.34:8080/webservice/3gcms</value>
+			 -->
+		</property>
+		<property name="serviceInterface" value="com.netease.cms.service.Cms3gWebService" />
+		<property name="chunkedPost" value="false"/> 
+	</bean>
+	
+	
+	<bean id="cmsWebService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl">
+			<value>http://ws.cms.163.com/webservice/CmsWebService</value>
+		</property>
+		<property name="serviceInterface" value="com.netease.cms.service.CmsWebService" />
+		<property name="chunkedPost" value="false"/> 
+	</bean>
+	
+	<bean id="photoWebService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl">
+			<value>http://oracle.service.240.photo.163.com/pic</value>
+		</property>
+		<property name="serviceInterface" value="com.netease.photo.service.PhotoService240" />
+		<property name="chunkedPost" value="false"/> 
+	</bean>
+	
+	<bean id="extrationWebService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl">
+			<value>http://extraction.ws.netease.com/ws</value>
+		</property>
+		<property name="serviceInterface" value="com.netease.extration.webservice.ExtrationWebService" />
+		<property name="chunkedPost" value="false"/> 
+	</bean>
+	
+	<bean id="videoWebService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl">
+			<value>http://ws.v.163.com/remote/videoinfo.do</value>
+		</property>
+		<property name="serviceInterface" value="com.netease.videolib2.remote.VideoLibWebService" />
+		<property name="chunkedPost" value="false"/> 
+	</bean>
+
+</beans>
