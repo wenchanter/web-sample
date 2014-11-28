@@ -20,7 +20,7 @@ public class MemcachedTest {
 	@Before
 	public void setUp() throws Exception {
 		BeanFactory factory = new ClassPathXmlApplicationContext(new String[] { "applicationContext-all.xml" });
-		xMemcachedClient = (XMemcachedClient) factory.getBean("socialMemcachedCacheClient");
+		xMemcachedClient = (XMemcachedClient) factory.getBean("sampleMemcachedCacheClient");
 	}
 	
 	@Test

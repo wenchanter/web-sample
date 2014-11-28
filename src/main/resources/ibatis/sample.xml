@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Sample">
+
+    <typeAlias alias="sample" type="com.wenchanter.web.sample.pojo.SamplePojo"/>
+    
+    <sql id="selectall">
+        select id,content,userid,time from sample
+    </sql>
+    
+    <insert id="insertNotify" parameterClass="sample">
+    	insert into sample(id,content,userid,time)
+    	values(#id#,#content#,#userid#,#time#)
+    </insert>
+
+    <select id="selectById" resultClass="sample" parameterClass="java.lang.Integer">
+        <include refid="selectall"/>
+        where id = #id#
+    </select>
+
+</sqlMap>
