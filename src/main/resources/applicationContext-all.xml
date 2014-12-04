@@ -28,9 +28,4 @@
 <!-- 	<import resource="applicationContext-quartz.xml" /> -->
 	<import resource="applicationContext-jms.xml" />
 
-	<!-- 
-	<import resource="applicationContext-jms-cgindex.xml" />
-	<import resource="applicationContext-jms-video.xml" />
-	<import resource="applicationContext-jms-pic.xml" />
-	 -->
 </beans>
