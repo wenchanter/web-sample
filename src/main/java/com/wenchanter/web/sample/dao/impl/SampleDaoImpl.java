@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.wenchanter.web.sample.dao.SampleDao;
 import com.wenchanter.web.sample.pojo.SamplePojo;
 
-@Repository
+//@Repository
 public class SampleDaoImpl extends BaseDao implements SampleDao {
 
 	@Override

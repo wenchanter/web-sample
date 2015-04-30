@@ -1,8 +1,11 @@
 package com.wenchanter.web.sample.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SamplePojo {
+public class SamplePojo implements Serializable{
+
+	private static final long serialVersionUID = -3683651535449994159L;
 
 	private int id;
 	

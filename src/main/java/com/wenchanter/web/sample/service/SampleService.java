@@ -18,12 +18,12 @@ import com.wenchanter.web.sample.util.ConstantsUtils;
 @Service
 public class SampleService {
 	
-	@Resource(name = "notifyMemcachedCacheClient")
+	@Resource(name = "sampleMemcachedCacheClient")
 	private XMemcachedClient xMemcachedClient;
 	
 	private Logger logger = Logger.getLogger(this.getClass());
 
-	@Resource
+//	@Resource
 	private SampleDao sampleDao;
 	
 	public SamplePojo selectById(int id) {

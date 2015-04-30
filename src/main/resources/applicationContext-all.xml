@@ -25,7 +25,8 @@
 <!-- 	<import resource="applicationContext-services.xml" /> -->
 <!-- 	<import resource="applicationContext-hessian.xml" /> -->
 	<import resource="applicationContext-xmemcache.xml" />
-<!-- 	<import resource="applicationContext-quartz.xml" /> -->
+	<import resource="applicationContext-quartz.xml" />
 	<import resource="applicationContext-jms.xml" />
+<!-- 	<import resource="applicationContext-mysql.xml" /> -->
 
 </beans>
